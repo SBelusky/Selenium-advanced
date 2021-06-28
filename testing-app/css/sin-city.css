@@ -1,0 +1,214 @@
+@font-face {
+    font-family: 'sincity';
+    src: url("../assets/fonts/sin_city.ttf");
+}
+
+body {
+    background-color: #000000;
+}
+
+.navbar-default .navbar-nav > li > a,
+.navbar-default .navbar-brand {
+    font-family: sincity, serif;
+    color: #c92100;
+    font-size: 15px;
+}
+
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:focus,
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-brand:focus,
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-nav > li > a:hover {
+    color: #750f00;
+    background: none;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li.sin {
+    margin: 0;
+    float: none;
+    padding: 5px 20px;
+    border: 1px solid #414141;
+    border-bottom: 0;
+    color: white;
+    -webkit-transition: all 400ms ease-in-out;
+    -moz-transition: all 400ms ease-in-out;
+    -ms-transition: all 400ms ease-in-out;
+    -o-transition: all 400ms ease-in-out;
+    transition: all 400ms ease-in-out;
+}
+
+li.sin:last-child {
+    border-bottom: 1px solid #414141;
+}
+
+li.sin div.description {
+    color: white;
+    float: right;
+    margin: 0;
+}
+
+div.description p {
+    display: inline-block;
+    margin: 0 20px;
+}
+
+div.description p.pending {
+    color: red;
+}
+
+h1,
+h3 {
+    font-family: 'sincity', sans-serif;
+}
+
+h1 {
+    color: #c92100;
+    font-size: 60px;
+}
+
+h3 span {
+    float: right;
+    margin-right: 10px;
+}
+
+h3 {
+    color: white;
+    font-size: 30px;
+}
+
+h4 {
+    padding: 10px 0;
+    border-bottom: 1px solid white;
+    font-weight: 600;
+}
+
+div.detail article {
+    color: white;
+    display: none;
+}
+
+div.detail h4 span {
+    float: right;
+}
+
+div.tags h5 {
+    padding-bottom: 5px;
+    border-bottom: 1px solid white;
+}
+
+div.detail p {
+    margin: 20px 0;
+}
+
+div.tags li {
+    margin: 0px 5px;
+}
+
+div.tags li:nth-child(1) {
+    margin-left: 0px;
+}
+
+div.tags li:nth-child(even) {
+    color: #c92100
+}
+
+li.sin a:hover {
+    text-decoration: none;
+}
+
+li.sin:hover {
+    background-color: #c92100;
+    cursor: pointer;
+}
+
+input.form-control,
+textarea.form-control,
+button.btn {
+    margin: 5px auto;
+    border-radius: 0;
+}
+
+input.form-control:focus,
+textarea.form-control:focus {
+    border: 2px solid #a51000;
+}
+
+button.btn {
+    background-color: transparent;
+    color: #a51000;
+    font-weight: 600;
+    font-family: sincity, sans-serif;
+    -webkit-transition: all 200ms ease-in-out;
+    -moz-transition: all 200ms ease-in-out;
+    -ms-transition: all 200ms ease-in-out;
+    -o-transition: all 200ms ease-in-out;
+    transition: all 200ms ease-in-out;
+    font-size: 16px;
+}
+
+button.btn:hover {
+    transform: scale(1.2);
+    color: #c92100;
+
+    /*font-size: 18px;*/
+}
+
+button.btn:active:focus,
+button.btn:focus {
+    outline: none;
+}
+
+textarea.form-control {
+    resize: none;
+}
+
+img.sinbadge {
+    position: absolute;
+    width: 500px;
+    bottom: 0;
+    right: 0;
+    z-index: -1;
+}
+
+label.checkbox-inline {
+    color: white;
+}
+
+.loader {
+    position: absolute;
+    top: 100px;
+    right: 50%;
+    display: none;
+}
+
+div.detail {
+    position: relative;
+}
+
+div.modal-content {
+    background-color: #000000;
+    border-color: #590f00;
+}
+div.modal-content h3, div.modal-content button.btn{
+    font-size: 20px;
+}
+
+div.modal-content button.btn {
+    background-color: transparent;
+    color: #a51000;
+    font-weight: 600;
+    font-family: sincity, sans-serif;
+    -webkit-transition: all 200ms ease-in-out;
+    -moz-transition: all 200ms ease-in-out;
+    -ms-transition: all 200ms ease-in-out;
+    -o-transition: all 200ms ease-in-out;
+    transition: all 200ms ease-in-out;
+    font-size: 16px;
+    border: none;
+}

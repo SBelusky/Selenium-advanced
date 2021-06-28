@@ -1,0 +1,37 @@
+nav ul {
+    list-style: none;
+}
+
+ul li {
+    float: left
+}
+
+.navbar-default .navbar-nav > li > a, .navbar-default .navbar-brand {
+    color: #008f4a;
+    font-weight: 600;
+    font-size: 25px;
+    font-family: 'Gloria Hallelujah', cursive;
+}
+
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:focus,
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-brand:focus, .navbar-default .navbar-brand:hover,
+.navbar-default .navbar-nav > li > a:hover {
+    color: #be2d2b;
+    background: none;
+}
+
+.navbar-default {
+    background-color: transparent;
+    border: none;
+}
+
+
+div.container-fluid-center {
+    display: table;
+    margin: 0 auto;
+}
+div.container{
+    margin-top: 30px;
+}

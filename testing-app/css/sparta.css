@@ -1,0 +1,125 @@
+@font-face {
+    font-family: '300';
+    src: url("../assets/fonts/adam.ttf");
+}
+
+h1 {
+    font-family: '300', "sans-serif";
+    font-size: 90px;
+    font-weight: 600;
+}
+
+h2 {
+    font-size: 40px;
+    font-weight: 600;
+}
+
+h1, h2 {
+    color: #be2d2b;
+}
+
+h2 {
+    font-family: 'Kalam', cursive;
+}
+
+body::after {
+    content: "";
+    background: url("../assets/img/300.jpg");
+    opacity: 0.3;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1;
+}
+
+.navbar-default .navbar-nav > li > a, .navbar-default .navbar-brand {
+    font-family: '300', sans-serif;
+    color: #be2d2b;
+}
+
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:focus,
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-brand:focus, .navbar-default .navbar-brand:hover,
+.navbar-default .navbar-nav > li > a:hover {
+    color: #751f1e;
+    background: none;
+}
+
+article.sin {
+    background-color: #bfbfbf;
+    padding: 10px 15px;
+    margin: 10px;
+    width: calc(25% - 20px);
+    float: left;
+    -webkit-transition: all 200ms ease-in-out;
+    -moz-transition: all 200ms ease-in-out;
+    -ms-transition: all 200ms ease-in-out;
+    -o-transition: all 200ms ease-in-out;
+    transition: all 200ms ease-in-out;
+    -webkit-box-shadow: 1px 3px 10px 0px rgba(82, 81, 82, 1);
+    -moz-box-shadow: 1px 3px 10px 0px rgba(82, 81, 82, 1);
+    box-shadow: 1px 3px 10px 0px rgba(82, 81, 82, 1);
+    overflow: hidden;
+}
+
+div.sins {
+    margin-top: 50px;
+}
+
+article.sin p {
+    margin: 20px auto;
+    overflow: hidden;
+}
+
+article.sin footer {
+    border-top: 1px solid #a8a8a8;
+}
+
+article.sin span {
+    float: right;
+}
+
+article.sin button.btn {
+    float: right;
+    border-radius: 0;
+}
+
+article.sin footer {
+    padding: 10px 0 0 0;
+}
+
+article.sin footer h5 {
+    display: inline-block;
+}
+
+article.sin:hover {
+    transform: scale(1.02);
+}
+
+.modal-content {
+    border-radius: 0;
+}
+
+.modal-dialog button.btn-primary {
+    background-color: #be2d2b;
+}
+.modal-dialog button.btn-primary:hover {
+    background-color: #be2d2b;
+}
+
+.modal-dialog button.btn{
+    border-radius: 0;
+}
+
+.modal-content {
+    background-color: #bfbfbf;
+}
+
+button.btn, button.btn:active, button.btn:focus{
+    outline:none;
+    border: none;
+}
+
