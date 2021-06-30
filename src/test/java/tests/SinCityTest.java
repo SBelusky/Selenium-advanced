@@ -1,98 +1,79 @@
 package tests;
 
+import base.TestBase;
 import enumerators.SinTag;
 import models.Sin;
-import org.junit.After;
-import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.firefox.FirefoxDriver;
+import pages.SinCityPage;
+import pages.SpartaPage;
+import utility.RandomWordGenerator;
 
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Properties;
+import java.util.Map;
 
-import static org.junit.Assert.fail;
+import static org.junit.Assert.assertEquals;
 
-public class SinCityTest {
-    private WebDriver driver;
-    private StringBuffer verificationErrors;
-    private String baseUrl;
-    static final Properties prop = new Properties();
-    private FileInputStream ip;
-    private static String url;
-
-    @Before
-    public void setUp() throws IOException {
-        ip = new FileInputStream("src/test/resources/config.properties");
-        prop.load(ip);
-
-        System.setProperty("webdriver.gecko.driver",prop.getProperty("WEBDRIVER_PATH"));
-        verificationErrors = new StringBuffer();
-        driver = new FirefoxDriver();
-        baseUrl = prop.getProperty("BASE_URL");
-        url = baseUrl +  "sincity.php";
-    }
+public class SinCityTest extends TestBase {
+    private static final int NUMBER_OF_WORDS = 3;
 
     @Test
-    public void newSinTest() {
-        driver.get(url);
-        WebElement chbMurder = driver.findElement(By.xpath("//label[1]"));
-        WebElement chbHijack = driver.findElement(By.xpath("//label[2]"));
-        WebElement chbBlackmail = driver.findElement(By.xpath("//label[3]"));
-        WebElement chbCarAccident = driver.findElement(By.xpath("//label[4]"));
-        WebElement chbRobery = driver.findElement(By.xpath("//label[5]"));
-        WebElement submit = driver.findElement(By.xpath("//button[@type='submit']"));
-
-        Sin sin = new Sin("A","B","C");
+    public void newSinTest() throws IOException {
+        SinCityPage sinCityPage = new SinCityPage();
+        Sin sin = new Sin("A", "B", "C");
         List<SinTag> sinTags = new ArrayList<>();
 
         sinTags.add(SinTag.MURDER);
         sinTags.add(SinTag.CAR_ACCIDENT);
         sin.setTags(sinTags);
 
-        fillSinInformation(sin);
-        markTag(sin.getTags());
+        sinCityPage.openPage();
+        sinCityPage.fillSinInformation(sin);
+        sinCityPage.markTag(sin.getTags());
+        sinCityPage.confessSin();
+        sinCityPage.openSinDetail(sin);
     }
 
-    public void fillSinInformation(String titleText, String authorText, String messageText){
-        WebElement title = driver.findElement(By.name("title"));
-        WebElement author = driver.findElement(By.name("author"));
-        WebElement message = driver.findElement(By.name("message"));
+    @Test
+    @Ignore
+    public void uloha() throws IOException {
+        SinCityPage sinCityPage = new SinCityPage();
+        SpartaPage spartaPage = new SpartaPage();
+        List<SinTag> sinTags = new ArrayList<>();
+        Map <String,String> sinDetail;
+        String[] listOfWords = RandomWordGenerator.generateRandomWords(NUMBER_OF_WORDS);
+        int i = 1;
 
-        title.sendKeys(titleText);
-        author.sendKeys(authorText);
-        message.sendKeys(messageText);
-    }
+        Sin sin = new Sin(listOfWords[0],listOfWords[1],listOfWords[2]);
 
-    public void fillSinInformation(Sin sin){
-        WebElement title = driver.findElement(By.name("title"));
-        WebElement author = driver.findElement(By.name("author"));
-        WebElement message = driver.findElement(By.name("message"));
+        sinTags.add(SinTag.MURDER);
+        sinTags.add(SinTag.CAR_ACCIDENT);
+        sin.setTags(sinTags);
 
-        title.sendKeys(sin.getTitle());
-        author.sendKeys(sin.getAuthor());
-        message.sendKeys(sin.getMessage());
-    }
+        sinCityPage.openPage();
+        sinCityPage.fillSinInformation(sin);
+        sinCityPage.markTag(sin.getTags());
+        sinCityPage.confessSin();
 
-    private void markTag(List<SinTag> tags){
-        for (SinTag tag : tags) {
-            driver.findElement(By.xpath("//input[@value='"+ tag.getXpathValue() +"']")).click();
+        assertEquals("pending", getDriver().findElement(By.xpath("(//ul[contains(@class, 'list-of-sins')]//p[contains(text(),'pending')])[last()]")).getText());
+
+        sinCityPage.openSinDetail(sin);
+        sinDetail = sinCityPage.getDetailSinData();
+        assertEquals(sin.getAuthor() + " : " + sin.getTitle(), sinDetail.get("titleSinnerTime").substring(0,sinDetail.get("titleSinnerTime").lastIndexOf("\n")));
+        assertEquals(sin.getMessage(),sinDetail.get("whatHaveYouDone"));
+
+        for (SinTag sinTag : sinTags) {
+            assertEquals(sinTag.getXpathValue(), sinDetail.get("tag" + i));
+            i++;
         }
-    }
 
-    @After
-    public void tearDown() {
-//        driver.quit();
-        String verificationErrorsString = verificationErrors.toString();
+        spartaPage.openPage();
+        spartaPage.forgiveSin(sin);
 
-        if (!"".equals(verificationErrorsString)){
-            fail(verificationErrorsString);
-        }
+        sinCityPage.openPage();
+        assertEquals("forgiven",sinCityPage.getSinStatus(sin));
     }
 }

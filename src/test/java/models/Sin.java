@@ -9,6 +9,7 @@ public class Sin {
     private String author;
     private String message;
     private List<SinTag> tags;
+    private boolean forgive = false;
 
     public Sin(String title, String author, String message) {
         this.title = title;
@@ -16,11 +17,12 @@ public class Sin {
         this.message = message;
     }
 
-    public Sin(String title, String author, String message, List<SinTag> tags) {
+    public Sin(String title, String author, String message, List<SinTag> tags, boolean forgive) {
         this.title = title;
         this.author = author;
         this.message = message;
         this.tags = tags;
+        this.forgive = forgive;
     }
 
     public String getTitle() {
@@ -53,5 +55,13 @@ public class Sin {
 
     public void setTags(List<SinTag> tags) {
         this.tags = tags;
+    }
+
+    public boolean isForgive() {
+        return forgive;
+    }
+
+    public void setForgive(boolean forgive) {
+        this.forgive = forgive;
     }
 }

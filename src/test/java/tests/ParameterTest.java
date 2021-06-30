@@ -2,10 +2,7 @@ package tests;
 
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.*;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.*;
@@ -19,9 +16,7 @@ import utility.ExcelReader;
 
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Properties;
+import java.util.*;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
@@ -55,8 +50,15 @@ public class ParameterTest {
     }
 
     @Parameters
-    public static List<Integer> getData() {
-        return Arrays.asList(1, 2, 3, 4, 5, 6, 7);
+    public static Collection<Object[]> getData() {
+        List<Integer> list = Arrays.asList(1, 2, 3);
+        Collection<Object[]> result = new ArrayList<>();
+
+        for (Integer integer : list) {
+            result.add(new Object[]{integer});
+        }
+
+        return result;
     }
 
     @Test

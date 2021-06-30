@@ -4,7 +4,6 @@ import categories.ReleaseTest;
 import categories.SmokeTest;
 import com.google.code.tempusfugit.concurrency.ConcurrentTestRunner;
 import org.junit.Assert;
-import org.junit.Rule;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 import org.junit.runner.RunWith;
